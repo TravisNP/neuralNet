@@ -21,3 +21,19 @@ std::vector<double> cross_product(const std::vector<double>& vec, const std::vec
 
     return crossProduct;
 }
+
+std::vector<double> cross_product(const std::vector<std::vector<double>>& mat, const std::vector<double>& vec) {
+    return cross_product(vec, mat);
+}
+
+std::vector<std::vector<double>> cross_product(const std::vector<double>& lhs, const std::vector<double>& rhs) {
+    if (lhs.size() != rhs.size())
+        throw CustomException("Cannot take the cross product between the two vectors as their sizes are not the same");
+
+    std::vector<std::vector<double>> crossProduct(lhs.size(), std::vector<double>(lhs.size(), 0));
+    for(int row = 0; row < lhs.size(); ++row)
+        for (int col = 0; col < lhs.size(); ++col)
+            crossProduct[row][col] = lhs[col] * rhs[row];
+
+    return crossProduct;
+}

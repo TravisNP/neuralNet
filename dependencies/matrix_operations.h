@@ -21,4 +21,22 @@ double dot_product(const std::vector<double>& vec1, const std::vector<double>& v
  */
 std::vector<double> cross_product(const std::vector<double>& vec, const std::vector<std::vector<double>>& mat);
 
+/**
+ * Calculates the cross product of n x m and m x 1 matrices
+ * @param matrix the n x m matrix
+ * @param vec the m x 1 vector
+ * @return their cross product
+ */
+std::vector<double> cross_product(const std::vector<std::vector<double>>& mat, const std::vector<double>& vec);
+
+/**
+ * Calculates the cross product of two vectors
+ * @param lhs the left vector
+ * @param rhs the right vector
+ * @return their cross product
+ */
+std::vector<std::vector<double>> cross_product(const std::vector<double>& lhs, const std::vector<double>& rhs);
+
+
+
 #endif

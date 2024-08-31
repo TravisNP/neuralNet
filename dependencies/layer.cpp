@@ -20,5 +20,5 @@ public:
     virtual std::vector<double> forward_prop(std::vector<double> _input) = 0;
 
     // Abstract backward propogation function
-    virtual std::vector<double> backward_prop(std::vector<double> output, const int learningRate) = 0;
+    virtual std::vector<double> backward_prop(std::vector<double> outputError, const double learningRate) = 0;
 };

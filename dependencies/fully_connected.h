@@ -29,7 +29,7 @@ public:
     /**
      * Backwards propagation function - TODO
      */
-    std::vector<double> backward_prop(std::vector<double> output, const int learningRate) override;
+    std::vector<double> backward_prop(std::vector<double> outputError, const double learningRate) override;
 
     void printWeights();
     void printBias();

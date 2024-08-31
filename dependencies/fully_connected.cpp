@@ -22,8 +22,15 @@ std::vector<double> FullyConnectedLayer::forward_prop(std::vector<double> _input
     return cross_product(input, weights) + bias;
 }
 
-std::vector<double> FullyConnectedLayer::backward_prop(std::vector<double> output, const int learningRate) {
-    return {};
+std::vector<double> FullyConnectedLayer::backward_prop(std::vector<double> outputError, const double learningRate) {
+    // Use derror over dweights and derror over dbias (outputError) to update weights and bias with gradient descent
+    // TODO: Figure out why I need this extra variable
+    std::vector<std::vector<double>> derror_over_dweights = cross_product(input, outputError);
+    weights -= learningRate * derror_over_dweights;
+    bias -= learningRate * outputError;
+
+    // Return derror over dx
+    return cross_product(weights, outputError);
 }
 
 void FullyConnectedLayer::printWeights() {
