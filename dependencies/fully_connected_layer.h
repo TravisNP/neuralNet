@@ -4,7 +4,7 @@
 #include <random>
 #include <iostream>
 
-#include "layer.cpp"
+#include "layer.h"
 #include "matrix_operations.h"
 #include "overload.h"
 

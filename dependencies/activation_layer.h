@@ -1,8 +1,10 @@
 #ifndef ACTIVATION_LAYER
 #define ACTIVATION_LAYER
 
-#include "layer.cpp"
+#include "layer.h"
 #include "matrix_operations.h"
+#include "activation_functions.h"
+
 #include <algorithm>
 
 class ActivationLayer : public Layer {
@@ -16,10 +18,9 @@ private:
 public:
     /**
      * Constructor for activation layer
-     * @param _activation_func the activation function
-     * @param _activation_func_derivatice the derivatice of the activation function
+     * @param activationFuncPair the activation function and it's derivative
      */
-    ActivationLayer(double (*_activation_func)(double), double(*_activation_func_derivative)(double));
+    ActivationLayer(ActivationFunction activationFuncPair);
 
     /**
      * Forward propagation function - takes in input and sets the ActivationLayer's input to _input and returns the output data
