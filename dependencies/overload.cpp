@@ -11,6 +11,13 @@ std::vector<double> operator+(const std::vector<double>& lhs, const std::vector<
     return res;
 }
 
+std::vector<double> operator*(const std::vector<double>& vec, const double mult) {
+    std::vector<double> res(vec.size(), 0);
+    for (int i = 0; i < vec.size(); ++i)
+        res[i] = vec[i] * mult;
+    return res;
+}
+
 std::vector<double>& operator*(const double mult, std::vector<double>& vec) {
     for (int i = 0; i < vec.size(); ++i)
         vec[i] *= mult;

@@ -37,6 +37,12 @@ std::vector<double> cross_product(const std::vector<std::vector<double>>& mat, c
  */
 std::vector<std::vector<double>> cross_product(const std::vector<double>& lhs, const std::vector<double>& rhs);
 
-
+/**
+ * Calculates the hadamard product of two vectors (element-wise multiplication)
+ * @param vec1 the first vector
+ * @param vec2 the second vector
+ * @return their hadamard product
+ */
+std::vector<double> hadamard_product(const std::vector<double>& vec1, const std::vector<double>& vec2);
 
 #endif

@@ -31,9 +31,19 @@ std::vector<std::vector<double>> cross_product(const std::vector<double>& lhs, c
         throw CustomException("Cannot take the cross product between the two vectors as their sizes are not the same");
 
     std::vector<std::vector<double>> crossProduct(lhs.size(), std::vector<double>(lhs.size(), 0));
-    for(int row = 0; row < lhs.size(); ++row)
+    for (int row = 0; row < lhs.size(); ++row)
         for (int col = 0; col < lhs.size(); ++col)
             crossProduct[row][col] = lhs[col] * rhs[row];
 
     return crossProduct;
+}
+
+std::vector<double> hadamard_product(const std::vector<double>& vec1, const std::vector<double>& vec2) {
+    if (vec1.size() != vec2.size())
+        throw CustomException("Cannot take the hadamard product between the two vectors as their sizes are not the same");
+
+    std::vector<double> hadamardProduct(vec1.size(), 0);
+    for (int i = 0; i < vec1.size(); ++i)
+        hadamardProduct[i] = vec1[i] * vec2[i];
+    return hadamardProduct;
 }

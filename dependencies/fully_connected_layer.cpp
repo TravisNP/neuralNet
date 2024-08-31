@@ -1,4 +1,4 @@
-#include "fully_connected.h"
+#include "fully_connected_layer.h"
 
 FullyConnectedLayer::FullyConnectedLayer(const int _NUM_INPUT_NODES, const int _NUM_OUTPUT_NODES) :
     Layer(_NUM_INPUT_NODES, _NUM_OUTPUT_NODES),
@@ -17,17 +17,17 @@ FullyConnectedLayer::FullyConnectedLayer(const int _NUM_INPUT_NODES, const int _
             bias[i] += dis(gen);
     }
 
-std::vector<double> FullyConnectedLayer::forward_prop(std::vector<double> _input) {
+std::vector<double> FullyConnectedLayer::forward_prop(const std::vector<double>& _input) {
     input = _input;
     return cross_product(input, weights) + bias;
 }
 
-std::vector<double> FullyConnectedLayer::backward_prop(std::vector<double> outputError, const double learningRate) {
+std::vector<double> FullyConnectedLayer::backward_prop(const std::vector<double>& outputError, const double learningRate) {
     // Use derror over dweights and derror over dbias (outputError) to update weights and bias with gradient descent
     // TODO: Figure out why I need this extra variable
     std::vector<std::vector<double>> derror_over_dweights = cross_product(input, outputError);
     weights -= learningRate * derror_over_dweights;
-    bias -= learningRate * outputError;
+    bias -= outputError * learningRate;
 
     // Return derror over dx
     return cross_product(weights, outputError);

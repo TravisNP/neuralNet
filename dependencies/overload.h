@@ -16,12 +16,12 @@
 std::vector<double> operator+(const std::vector<double>& lhs, const std::vector<double>& rhs);
 
 /**
- * Multiples a constant through a matrix, modifying the matrix
+ * Multiplies a constant through a vector
  * @param mult the constant
- * @param matrix the matrix
- * @return a reference to the multiplied matrix
+ * @param vec the vector
+ * @return the new vector with each element multiplied by the constant
  */
-std::vector<std::vector<double>>& operator*(const double mult, std::vector<std::vector<double>>& matrix);
+std::vector<double> operator*(const std::vector<double>& vec, const double mult);
 
 /**
  * Multiplies a constant through a vector, modifying the vector
@@ -30,6 +30,14 @@ std::vector<std::vector<double>>& operator*(const double mult, std::vector<std::
  * @return a reference to the vmultiplied vector
  */
 std::vector<double>& operator*(const double mult, std::vector<double>& vec);
+
+/**
+ * Multiples a constant through a matrix, modifying the matrix
+ * @param mult the constant
+ * @param matrix the matrix
+ * @return a reference to the multiplied matrix
+ */
+std::vector<std::vector<double>>& operator*(const double mult, std::vector<std::vector<double>>& matrix);
 
 /**
  * Subtracts two vectors, rhs from lhs, modifying lhs
