@@ -22,3 +22,7 @@ std::vector<double> ActivationLayer::backward_prop(const std::vector<double>& ou
 std::string ActivationLayer::get_info() {
     return "ActivationLayer - " + activationFunctionName;
 }
+
+std::pair<std::vector<std::vector<double>>, std::vector<double>> ActivationLayer::get_weights_bias() {
+    return std::make_pair(std::vector<std::vector<double>>(), std::vector<double>());
+}

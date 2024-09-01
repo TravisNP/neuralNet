@@ -48,3 +48,23 @@ std::vector<double>& operator-=(std::vector<std::vector<double>>& lhs, const std
         lhs[i] -= rhs[i];
     }
 }
+
+std::ostream& operator<<(std::ostream& os, const std::vector<double>& vec) {
+    os << "[";
+    for (size_t i = 0; i < vec.size(); ++i) {
+        os << vec[i];
+        if (i != vec.size() - 1) {
+            os << ", ";
+        }
+    }
+    os << "]";
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const std::vector<std::vector<double>>& mat) {
+    os << "[";
+    for (int i = 0; i < mat.size() - 1; ++i)
+        os << mat[i] << "," << std::endl;
+    os << mat.back() << "]";
+    return os;
+}

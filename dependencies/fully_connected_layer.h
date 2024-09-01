@@ -47,11 +47,23 @@ public:
      */
     std::string get_info() override;
 
-    // Prints the weights for each layer
-    void printWeights();
+    /**
+     * Gets the weights and bias of the layer
+     * @return a pair of the weights and bias
+     */
+    std::pair<std::vector<std::vector<double>>, std::vector<double>> get_weights_bias() override;
 
-    // Prints the bias for each layer
-    void printBias();
+    /**
+     * Sets the weights of the layer
+     * @param _weights the weights
+     */
+    void set_weights(const std::vector<std::vector<double>>& _weights);
+
+    /**
+     * Sets the bias of the layer
+     * @param _bias the bias
+     */
+    void set_bias(const std::vector<double>& _bias);
 };
 
 #endif

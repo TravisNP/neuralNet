@@ -83,24 +83,36 @@ void NeuralNet::train(const std::vector<std::vector<double>>& data, const std::v
         for (int i = 0; i < NUM_DATA_POINTS; ++i) {
             // The output for a layer
             std::vector<double> output = data[i];
+            std::cout << output << std::endl;
 
             // Do forward propagation
-            for (Layer* layer : layers)
+            for (Layer* layer : layers) {
                 output = layer->forward_prop(output);
+                std::cout << output << std::endl;
+            }
 
             // Record the error for this data point
-            avgError += lossFunction.activationFunction(labels[i], output);
+            avgError += lossFunction.activationFunction(output, labels[i]);
 
             // Do backwards propagation
             // errorGradient acts as both derror_over_dx and derror_over_dy
-            std::vector<double> errorGradient = lossFunction.activationFunctionDerivative(labels[i], output);
+            std::vector<double> errorGradient = lossFunction.activationFunctionDerivative(output, labels[i]);
             for (std::vector<Layer*>::reverse_iterator it = layers.rbegin(); it != layers.rend(); ++it)
                 errorGradient = (*it)->backward_prop(errorGradient, learningRate);
+
+            std::cout << std::endl;
+            std::cout << "W" << layers[0]->get_weights_bias().first << std::endl;
+            std::cout << "B" << layers[0]->get_weights_bias().second << std::endl;
+            std::cout << std::endl;
+
+            std::cout << "W" << layers[2]->get_weights_bias().first << std::endl;
+            std::cout << "B" << layers[2]->get_weights_bias().second << std::endl;
+            std::cout << "------------------------------------------" << std::endl;
         }
 
         avgError /= NUM_DATA_POINTS;
-        if (epoch % printLossEveryXEpochs == 0)
-            std::cout << "Avg error: " << std::to_string(avgError) << std::endl;
+        if ((epoch + 1) % printLossEveryXEpochs == 0)
+            std::cout << "Epoch " + std::to_string(epoch + 1) + ": " << std::to_string(avgError) << std::endl;
     }
 }
 

@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include <iostream>
 
 #include "custom_exceptions.h"
 
@@ -54,5 +55,9 @@ std::vector<double>& operator-=(std::vector<double>& lhs, const std::vector<doub
  * @return a reference to lhs, which is now lhs - rhs
  */
 std::vector<double>& operator-=(std::vector<std::vector<double>>& lhs, const std::vector<std::vector<double>>& rhs);
+
+std::ostream& operator<<(std::ostream& os, const std::vector<double>& vec);
+
+std::ostream& operator<<(std::ostream& os, const std::vector<std::vector<double>>& mat);
 
 #endif

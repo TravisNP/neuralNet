@@ -45,6 +45,12 @@ public:
      * @return the info about the layer
      */
     std::string get_info() override;
+
+    /**
+     * Returns an empty pair as their are no weights and bias
+     * @return nothing
+     */
+    std::pair<std::vector<std::vector<double>>, std::vector<double>> get_weights_bias() override;
 };
 
 #endif

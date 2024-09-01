@@ -31,8 +31,11 @@ public:
     // Abstract backward propogation function
     virtual std::vector<double> backward_prop(const std::vector<double>& outputError, const double learningRate) = 0;
 
-    // Abstract method to print info
+    // Abstract method to get info
     virtual std::string get_info() = 0;
+
+    // Abstract method to get weights
+    virtual std::pair<std::vector<std::vector<double>>, std::vector<double>>  get_weights_bias() = 0;
 };
 
 #endif

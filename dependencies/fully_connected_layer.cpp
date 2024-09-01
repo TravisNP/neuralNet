@@ -15,6 +15,13 @@ FullyConnectedLayer::FullyConnectedLayer(const int _NUM_INPUT_NODES, const int _
 
         for (int i = 0; i < NUM_OUTPUT_NODES; ++i)
             bias[i] += dis(gen);
+
+        // for (int row = 0; row < NUM_INPUT_NODES; ++row)
+        //     for (int col = 0; col < NUM_OUTPUT_NODES; ++col)
+        //         weights[row][col] = 0;
+
+        // for (int i = 0; i < NUM_OUTPUT_NODES; ++i)
+        //     bias[i] = 0;
     }
 
 std::vector<double> FullyConnectedLayer::forward_prop(const std::vector<double>& _input) {
@@ -37,16 +44,14 @@ std::string FullyConnectedLayer::get_info() {
     return "FullyConnected - I: " + std::to_string(NUM_INPUT_NODES) + ", O: " + std::to_string(NUM_OUTPUT_NODES);
 }
 
-void FullyConnectedLayer::printWeights() {
-    for (int row = 0; row < weights.size(); ++row) {
-        for (int col = 0; col < weights[0].size(); ++col)
-            std::cout << weights[row][col] << " ";
-        std::cout << std::endl;
-    }
+std::pair<std::vector<std::vector<double>>, std::vector<double>> FullyConnectedLayer::get_weights_bias() {
+    return std::make_pair(weights, bias);
 }
 
-void FullyConnectedLayer::printBias() {
-    for (int i = 0; i < bias.size(); ++i)
-        std::cout << bias[i] << " ";
-    std::cout << std::endl;
+void FullyConnectedLayer::set_weights(const std::vector<std::vector<double>>& _weights) {
+    weights = _weights;
+}
+
+void FullyConnectedLayer::set_bias(const std::vector<double>& _bias) {
+    bias = _bias;
 }
