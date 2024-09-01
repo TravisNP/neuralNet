@@ -16,7 +16,7 @@ std::vector<double> mean_squared_error_gradient_func(const std::vector<double>& 
 
     std::vector<double> gradient(predicted.size(), 0);
     for (int i = 0; i < predicted.size(); ++i)
-        gradient[i] = 2/predicted.size() * (predicted[i] - actual[i]);
+        gradient[i] = 2.0/predicted.size() * (predicted[i] - actual[i]);
     return gradient;
 }
 

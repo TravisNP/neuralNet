@@ -79,7 +79,6 @@ void NeuralNet::train(const std::vector<std::vector<double>>& data, const std::v
     double avgError;
 
     for (int epoch = 0; epoch < numEpochs; ++epoch) {
-
         avgError = 0;
 
         for (int i = 0; i < NUM_DATA_POINTS; ++i) {
