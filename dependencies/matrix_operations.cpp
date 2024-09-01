@@ -16,9 +16,9 @@ std::vector<double> cross_product(const std::vector<double>& vec, const std::vec
         throw CustomException("Cannot take the cross product between the vector and matrix as their sizes are not the same");
 
     std::vector<double> crossProduct(mat[0].size(), 0);
-    for (int col = 0; col < mat.size(); ++col)
-        for (int row = 0; row < vec.size(); ++row)
-            crossProduct[col] += vec[row] * mat[col][row];
+    for (int col = 0; col < mat[0].size(); ++col)
+        for (int row = 0; row < mat.size(); ++row)
+            crossProduct[col] += mat[row][col] * vec[row];
 
     return crossProduct;
 }
