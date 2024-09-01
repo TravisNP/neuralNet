@@ -16,10 +16,10 @@ SRCS = $(wildcard $(DEPENDENCIES_DIR)/*.cpp)
 OBJS = $(SRCS:$(DEPENDENCIES_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 
 # Compiles all the object files together into one executable
-testNeuralNet: $(OBJS) $(BUILD_DIR)/testNeuralNet.o
-	$(CXX) $(CXXFLAGS) -o testNeuralNet $(OBJS) $(BUILD_DIR)/testNeuralNet.o $(SRLFLAGS)
+XORneuralNet: $(OBJS) $(BUILD_DIR)/XORneuralNet.o
+	$(CXX) $(CXXFLAGS) -o XORneuralNet $(OBJS) $(BUILD_DIR)/XORneuralNet.o $(SRLFLAGS)
 
-$(BUILD_DIR)/testNeuralNet.o: testNeuralNet.cpp
+$(BUILD_DIR)/XORneuralNet.o: XORneuralNet.cpp
 	@mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
@@ -30,5 +30,5 @@ $(BUILD_DIR)/%.o: $(DEPENDENCIES_DIR)/%.cpp
 
 # Removes the build directory, all object files, and the executable
 clean:
-	rm -f neuralNet $(BUILD_DIR)/*.o
+	rm -f XORneuralNet $(BUILD_DIR)/*.o
 	rm -rf $(BUILD_DIR)

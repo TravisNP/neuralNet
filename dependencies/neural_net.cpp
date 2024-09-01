@@ -75,20 +75,20 @@ void NeuralNet::train(const std::vector<std::vector<double>>& data, const std::v
     // the number of data points
     const int NUM_DATA_POINTS = data.size();
 
+    // The average error, not used in calculation, just displayed to user
+    double avgError;
+
     for (int epoch = 0; epoch < numEpochs; ++epoch) {
 
-        // the error, not used in calculation, just displayed to user
-        double avgError = 0;
+        avgError = 0;
 
         for (int i = 0; i < NUM_DATA_POINTS; ++i) {
             // The output for a layer
             std::vector<double> output = data[i];
-            // std::cout << output << std::endl;
 
             // Do forward propagation
-            for (Layer* layer : layers) {
+            for (Layer* layer : layers)
                 output = layer->forward_prop(output);
-            }
 
             // Record the error for this data point
             avgError += lossFunction.activationFunction(output, labels[i]);
@@ -104,6 +104,30 @@ void NeuralNet::train(const std::vector<std::vector<double>>& data, const std::v
         if ((epoch + 1) % printLossEveryXEpochs == 0)
             std::cout << "Epoch " + std::to_string(epoch + 1) + ": " << std::to_string(avgError) << std::endl;
     }
+}
+
+std::vector<std::vector<double>> NeuralNet::predict(const std::vector<std::vector<double>>& data) {
+    // Number of data points
+    const int NUM_DATA_POINTS = data.size();
+
+    // Output for a layer
+    std::vector<double> output;
+
+    // predicted labels
+    std::vector<std::vector<double>> predictedOutput(NUM_DATA_POINTS);
+
+    for (int i = 0; i < NUM_DATA_POINTS; ++i) {
+        // The output for a layer
+        output = data[i];
+
+        // Do forward propagation
+        for (Layer* layer : layers)
+            output = layer->forward_prop(output);
+
+        predictedOutput[i] = output;
+    }
+
+    return predictedOutput;
 }
 
 std::vector<std::string> NeuralNet::get_info() {

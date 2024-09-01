@@ -5,8 +5,17 @@
 #include <algorithm>
 #include <math.h>
 
-// Activation function and it's derivative
-typedef std::tuple<double (*)(double), double(*)(double), std::string> ActivationFunction;
+// Activation function, it's derivative, and name
+struct ActivationFunction {
+    // activation function
+    double (*activationFunction)(double);
+
+    // derivative of the activation function
+    double(*activationFunctionDerivative)(double);
+
+    // name of the activation function
+    std::string name;
+};
 
 // Relu activation function
 extern ActivationFunction RELU;

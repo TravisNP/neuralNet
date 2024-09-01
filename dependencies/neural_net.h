@@ -90,6 +90,13 @@ public:
     void train(const std::vector<std::vector<double>>& data, const std::vector<std::vector<double>>& labels, const int numEpochs, double learningRate);
 
     /**
+     * Predicts the output of the neural network given data
+     * @param data the data
+     * @return the predicted output
+     */
+    std::vector<std::vector<double>> predict(const std::vector<std::vector<double>>& data);
+
+    /**
      * Gets info about each layer
      * @return a vector with info about each layer in it's corresponding indx
      */

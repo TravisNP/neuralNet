@@ -1,9 +1,9 @@
 #include "activation_layer.h"
 
 ActivationLayer::ActivationLayer(ActivationFunction activationFuncTuple) :
-    activation_func(get<0>(activationFuncTuple)),
-    activation_func_derivative(get<1>(activationFuncTuple)),
-    activationFunctionName(get<2>(activationFuncTuple)) {}
+    activation_func(activationFuncTuple.activationFunction),
+    activation_func_derivative(activationFuncTuple.activationFunctionDerivative),
+    activationFunctionName(activationFuncTuple.name) {}
 
 std::vector<double> ActivationLayer::forward_prop(const std::vector<double>& _input) {
     input = _input;
