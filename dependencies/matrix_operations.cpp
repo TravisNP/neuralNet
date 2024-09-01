@@ -15,25 +15,31 @@ std::vector<double> cross_product(const std::vector<double>& vec, const std::vec
     if (vec.size() != mat.size())
         throw CustomException("Cannot take the cross product between the vector and matrix as their sizes are not the same");
 
-    std::vector<double> crossProduct(vec.size(), 0);
-    for (int i = 0; i < vec.size(); ++i)
-        crossProduct[i] = dot_product(vec, mat[i]);
+    std::vector<double> crossProduct(mat[0].size(), 0);
+    for (int col = 0; col < mat.size(); ++col)
+        for (int row = 0; row < vec.size(); ++row)
+            crossProduct[col] += vec[row] * mat[col][row];
 
     return crossProduct;
 }
 
 std::vector<double> cross_product(const std::vector<std::vector<double>>& mat, const std::vector<double>& vec) {
-    return cross_product(vec, mat);
+    if (mat[0].size() != vec.size())
+        throw CustomException("Cannot take the cross product between the matrix and vector as their sizes are not the same");
+
+    std::vector<double> crossProduct(mat.size(), 0);
+    for (int row = 0; row < mat.size(); ++row)
+        for (int col = 0; col < mat[0].size(); ++col)
+            crossProduct[row] += mat[row][col] * vec[col];
+
+    return crossProduct;
 }
 
 std::vector<std::vector<double>> cross_product(const std::vector<double>& lhs, const std::vector<double>& rhs) {
-    if (lhs.size() != rhs.size())
-        throw CustomException("Cannot take the cross product between the two vectors as their sizes are not the same");
-
-    std::vector<std::vector<double>> crossProduct(lhs.size(), std::vector<double>(lhs.size(), 0));
+    std::vector<std::vector<double>> crossProduct(lhs.size(), std::vector<double>(rhs.size(), 0));
     for (int row = 0; row < lhs.size(); ++row)
         for (int col = 0; col < lhs.size(); ++col)
-            crossProduct[row][col] = lhs[col] * rhs[row];
+            crossProduct[row][col] = lhs[row] * rhs[col];
 
     return crossProduct;
 }

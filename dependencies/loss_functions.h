@@ -7,7 +7,11 @@
 
 #include "custom_exceptions.h"
 
-typedef std::pair<double (*)(const std::vector<double>&, const std::vector<double>&), std::vector<double>(*)(const std::vector<double>&, const std::vector<double>&)> LossFunction;
+struct LossFunction {
+    double (*activationFunction)(const std::vector<double>&, const std::vector<double>&);
+    std::vector<double>(*activationFunctionDerivative)(const std::vector<double>&, const std::vector<double>&);
+    std::string name;
+};
 
 extern LossFunction mean_squared_error;
 

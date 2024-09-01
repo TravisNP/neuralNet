@@ -20,4 +20,4 @@ std::vector<double> mean_squared_error_gradient_func(const std::vector<double>& 
     return gradient;
 }
 
-LossFunction mean_squared_error = std::make_pair(mean_squared_error_func, mean_squared_error_gradient_func);
+LossFunction mean_squared_error = LossFunction(mean_squared_error_func, mean_squared_error_gradient_func, "MSE");
