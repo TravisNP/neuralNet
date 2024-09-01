@@ -23,6 +23,14 @@ $(BUILD_DIR)/XORneuralNet.o: XORneuralNet.cpp
 	@mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
+# Compiles all the object files together into one executable
+irisNeuralNet: $(OBJS) $(BUILD_DIR)/irisNeuralNet.o
+	$(CXX) $(CXXFLAGS) -o irisNeuralNet $(OBJS) $(BUILD_DIR)/irisNeuralNet.o $(SRLFLAGS)
+
+$(BUILD_DIR)/irisNeuralNet.o: irisNeuralNet.cpp
+	@mkdir -p $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
 # Compiles the .o files in the build directory
 $(BUILD_DIR)/%.o: $(DEPENDENCIES_DIR)/%.cpp
 	@mkdir -p $(BUILD_DIR)
@@ -30,5 +38,5 @@ $(BUILD_DIR)/%.o: $(DEPENDENCIES_DIR)/%.cpp
 
 # Removes the build directory, all object files, and the executable
 clean:
-	rm -f XORneuralNet $(BUILD_DIR)/*.o
+	rm -f XORneuralNet irisNeuralNet $(BUILD_DIR)/*.o
 	rm -rf $(BUILD_DIR)
