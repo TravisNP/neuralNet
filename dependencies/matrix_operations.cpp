@@ -38,7 +38,7 @@ std::vector<double> cross_product(const std::vector<std::vector<double>>& mat, c
 std::vector<std::vector<double>> cross_product(const std::vector<double>& lhs, const std::vector<double>& rhs) {
     std::vector<std::vector<double>> crossProduct(lhs.size(), std::vector<double>(rhs.size(), 0));
     for (int row = 0; row < lhs.size(); ++row)
-        for (int col = 0; col < lhs.size(); ++col)
+        for (int col = 0; col < rhs.size(); ++col)
             crossProduct[row][col] = lhs[row] * rhs[col];
 
     return crossProduct;

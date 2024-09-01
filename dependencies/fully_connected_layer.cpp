@@ -15,13 +15,6 @@ FullyConnectedLayer::FullyConnectedLayer(const int _NUM_INPUT_NODES, const int _
 
         for (int i = 0; i < NUM_OUTPUT_NODES; ++i)
             bias[i] += dis(gen);
-
-        // for (int row = 0; row < NUM_INPUT_NODES; ++row)
-        //     for (int col = 0; col < NUM_OUTPUT_NODES; ++col)
-        //         weights[row][col] = 0;
-
-        // for (int i = 0; i < NUM_OUTPUT_NODES; ++i)
-        //     bias[i] = 0;
     }
 
 std::vector<double> FullyConnectedLayer::forward_prop(const std::vector<double>& _input) {
