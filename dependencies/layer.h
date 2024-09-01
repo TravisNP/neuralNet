@@ -2,6 +2,7 @@
 #define LAYER
 
 #include <vector>
+#include <string>
 
 class Layer {
 protected:
@@ -29,6 +30,9 @@ public:
 
     // Abstract backward propogation function
     virtual std::vector<double> backward_prop(const std::vector<double>& outputError, const double learningRate) = 0;
+
+    // Abstract method to print info
+    virtual std::string get_info() = 0;
 };
 
 #endif

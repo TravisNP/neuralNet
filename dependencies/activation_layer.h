@@ -15,12 +15,15 @@ private:
     // The derivative of the activation function
     double (*activation_func_derivative)(double);
 
+    // Name of the activation function
+    std::string activationFunctionName;
+
 public:
     /**
      * Constructor for activation layer
-     * @param activationFuncPair the activation function and it's derivative
+     * @param activationFuncTuple the activation function, it's derivative, and name
      */
-    ActivationLayer(ActivationFunction activationFuncPair);
+    ActivationLayer(ActivationFunction activationFuncTuple);
 
     /**
      * Forward propagation function - takes in input and sets the ActivationLayer's input to _input and returns the output data
@@ -36,6 +39,12 @@ public:
      * @return the gradient of the error with respect to the input
      */
     std::vector<double> backward_prop(const std::vector<double>& outputError, const double learningRate = 0) override;
+
+    /**
+     * Gets the type of layer and activation function
+     * @return the info about the layer
+     */
+    std::string get_info() override;
 };
 
 #endif

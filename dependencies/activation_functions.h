@@ -6,7 +6,7 @@
 #include <math.h>
 
 // Activation function and it's derivative
-typedef std::pair<double (*)(double), double(*)(double)> ActivationFunction;
+typedef std::tuple<double (*)(double), double(*)(double), std::string> ActivationFunction;
 
 // Relu activation function
 extern ActivationFunction RELU;

@@ -16,10 +16,10 @@ SRCS = $(wildcard $(DEPENDENCIES_DIR)/*.cpp)
 OBJS = $(SRCS:$(DEPENDENCIES_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 
 # Compiles all the object files together into one executable
-neuralNet: $(OBJS) $(BUILD_DIR)/neuralNet.o
-	$(CXX) $(CXXFLAGS) -o neuralNet $(OBJS) $(BUILD_DIR)/neuralNet.o $(SRLFLAGS)
+testNeuralNet: $(OBJS) $(BUILD_DIR)/testNeuralNet.o
+	$(CXX) $(CXXFLAGS) -o testNeuralNet $(OBJS) $(BUILD_DIR)/testNeuralNet.o $(SRLFLAGS)
 
-$(BUILD_DIR)/neuralNet.o: neuralNet.cpp
+$(BUILD_DIR)/testNeuralNet.o: testNeuralNet.cpp
 	@mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 

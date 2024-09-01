@@ -33,6 +33,10 @@ std::vector<double> FullyConnectedLayer::backward_prop(const std::vector<double>
     return cross_product(weights, outputError);
 }
 
+std::string FullyConnectedLayer::get_info() {
+    return "FullyConnected - I: " + std::to_string(NUM_INPUT_NODES) + ", O: " + std::to_string(NUM_OUTPUT_NODES);
+}
+
 void FullyConnectedLayer::printWeights() {
     for (int row = 0; row < weights.size(); ++row) {
         for (int col = 0; col < weights[0].size(); ++col)

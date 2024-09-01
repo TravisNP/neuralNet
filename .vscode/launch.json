@@ -8,7 +8,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "lldb Debug",
-            "program": "${workspaceFolder}/neuralNet",
+            "program": "${workspaceFolder}/testNeuralNet",
             "args": [],
             "cwd": "${workspaceFolder}"
         }

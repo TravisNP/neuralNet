@@ -41,6 +41,12 @@ public:
      */
     std::vector<double> backward_prop(const std::vector<double>& outputError, const double learningRate) override;
 
+    /**
+     * Gets the type of layer, number of inputs, and number of outputs
+     * @return the info about the layer
+     */
+    std::string get_info() override;
+
     // Prints the weights for each layer
     void printWeights();
 
