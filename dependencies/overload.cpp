@@ -49,6 +49,18 @@ std::vector<double>& operator-=(std::vector<std::vector<double>>& lhs, const std
     }
 }
 
+std::vector<double> operator-(const std::vector<double>& lhs, const std::vector<double>& rhs) {
+    if (lhs.size() != rhs.size())
+        throw CustomException("Cannot preform pairwise subtraction (-) of two vectors as they have a different number of rows");
+
+    std::vector<double> res(lhs.size(), 0);
+    for (int i = 0; i < lhs.size(); ++i) {
+        res[i] = lhs[i] - rhs[i];
+    }
+
+    return res;
+}
+
 std::ostream& operator<<(std::ostream& os, const std::vector<double>& vec) {
     os << "[";
     for (size_t i = 0; i < vec.size(); ++i) {

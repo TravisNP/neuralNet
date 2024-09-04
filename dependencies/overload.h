@@ -56,6 +56,14 @@ std::vector<double>& operator-=(std::vector<double>& lhs, const std::vector<doub
  */
 std::vector<double>& operator-=(std::vector<std::vector<double>>& lhs, const std::vector<std::vector<double>>& rhs);
 
+/**
+ * Subtracts two vectors, rhs from lhs, and returns the rest
+ * @param lhs the vector being subtracted from
+ * @param rhs the vector being subtracted
+ * @return their subtraction
+ */
+std::vector<double> operator-(const std::vector<double>& lhs, const std::vector<double>& rhs);
+
 std::ostream& operator<<(std::ostream& os, const std::vector<double>& vec);
 
 std::ostream& operator<<(std::ostream& os, const std::vector<std::vector<double>>& mat);

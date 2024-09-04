@@ -29,14 +29,12 @@ int main() {
         ActivationLayer* a4 = new ActivationLayer(RELU);
 
         // Create the neural network and print out info about it's layers
-        NeuralNet myNet(mean_squared_error, PRINT_ERROR_EVERY_X_EPOCHS,
+        NeuralNet myNet(softMax_onehot_error, PRINT_ERROR_EVERY_X_EPOCHS,
             {fc1, a1, fc2, a2, fc3, a3, fc4, a4});
         for (std::string str : myNet.get_info())
             std::cout << str << std::endl;
 
         IrisData irisData = readIrisData("data/iris.data", 80);
-        // std::cout << irisData.trainingData << std::endl;
-        // std::cout << irisData.trainingLabel << std::endl;
 
         // Train the network
         myNet.train(irisData.trainingData, irisData.trainingLabels, NUM_EPOCS, CONSTANT_LEARNING_RATE);
@@ -44,11 +42,11 @@ int main() {
         // Predict the labels for the training dataset
         std::vector<std::vector<double>> predictedLabels = myNet.predict(irisData.testData);
 
-        // Calculate the overall MSE
-        double MSE = 0;
+        // Calculate the overall softmax loss
+        double SFLoss = 0;
         for (int i = 0; i < irisData.testLabels.size(); ++i)
-            MSE += mean_squared_error.activationFunction(predictedLabels[i], irisData.testLabels[i]);
-        std::cout << "MSE on test dataset: " << MSE << std::endl;
+            SFLoss += softMax_onehot_error.activationFunction(predictedLabels[i], irisData.testLabels[i]);
+        std::cout << "SoftMax loss on test dataset: " << SFLoss << std::endl;
 
     } catch (CustomException& e) {
         std::cout << "Error - " << e.getMessage() << std::endl;
